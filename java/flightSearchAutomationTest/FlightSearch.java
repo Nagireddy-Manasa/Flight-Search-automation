@@ -20,6 +20,7 @@ import org.testng.annotations.Test;
 import flightSearchAutomationPages.EnteringFlightDetails;
 import flightSearchAutomationPages.PrintingFlightDetails;
 import flightSearchAutomationPages.ReportsGen;
+
 @Listeners(ReportsGen.class)
 public class FlightSearch {
 	WebDriver driver;
@@ -43,7 +44,6 @@ public class FlightSearch {
 	public void testDetails() throws InterruptedException {
 
 		detailsObject.ClickOnOrigin("hyd");
-		
 
 	}
 
@@ -134,22 +134,21 @@ public class FlightSearch {
 	public void CapturingScreenshot() throws IOException, InterruptedException {
 
 		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		String date=new SimpleDateFormat("dd-mm-yyyy-hh-mm-ss-ms").format(new Date());
-		File target = new File("C:\\Users\\nagmanasa\\Desktop\\Project\\Capture"+date+".png");
+		String date = new SimpleDateFormat("dd-mm-yyyy-hh-mm-ss-ms").format(new Date());
+		File target = new File("C:\\Users\\nagmanasa\\Desktop\\Project\\Capture" + date + ".png");
 		FileUtils.copyFile(scrFile, target);
 		availableFlightsObject.CaptureScreenshot();
 		Thread.sleep(1000);
 		File scrFile1 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		File target1 = new File("C:\\Users\\nagmanasa\\Desktop\\Project\\Capture1"+date+".png");
+		File target1 = new File("C:\\Users\\nagmanasa\\Desktop\\Project\\Capture1" + date + ".png");
 		FileUtils.copyFile(scrFile1, target1);
 		availableFlightsObject.CaptureScreenshot();
 		Thread.sleep(1000);
 		File scrFile2 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		File target2 = new File("C:\\Users\\nagmanasa\\Desktop\\Project\\Capture2"+date+".png");
+		File target2 = new File("C:\\Users\\nagmanasa\\Desktop\\Project\\Capture2" + date + ".png");
 		FileUtils.copyFile(scrFile2, target2);
 		availableFlightsObject.CaptureScreenshot();
-	
-		
+
 	}
 
 	@AfterTest

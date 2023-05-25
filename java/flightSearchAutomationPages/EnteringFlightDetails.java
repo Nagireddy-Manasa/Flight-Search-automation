@@ -18,7 +18,6 @@ public class EnteringFlightDetails {
 	By popup = By.xpath("//button[text()='Later']");
 	By Hyderabad = By.xpath("//li[@class='ui-menu-item']//div[text()='Hyderabad (HYD)']");
 	By Destination = By.id("stationTo");
-	// By Pune=By.xpath("//li[@class='ui-menu-item']//div[text()='Pune (PNQ)']");
 	By Pune = By.xpath("//ul[@id='ui-id-2']//li//div[text()='Pune (PNQ)']");
 	By Departure = By.id("originDate");
 	By Date = By.xpath("//span[@class='act active-red']");
@@ -33,51 +32,45 @@ public class EnteringFlightDetails {
 
 	}
 
-	public void ClickOnOrigin(String from)  {
+	public void ClickOnOrigin(String from) {
 
 		driver.findElement(Origin).sendKeys(from);
-		
 
 	}
 
-	public void ClickOnPopup()  {
+	public void ClickOnPopup() {
 
 		driver.findElement(popup).click();
-		
 
 	}
 
 	public void ClickOnHyd() {
-
 		Actions act = new Actions(driver);
 		act.sendKeys(driver.findElement(Hyderabad)).keyDown(Keys.ARROW_DOWN).keyUp(Keys.ARROW_UP).click().build()
 				.perform();
-		
+
 	}
 
-	public void ClickOnDestination(String to)  {
+	public void ClickOnDestination(String to) {
 		driver.findElement(Destination).sendKeys(to);
-		
 
 	}
 
 	public void ClickOnPune() {
-		// Thread.sleep(2000);
-//	  WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(50));
-//		wait.until(ExpectedConditions.presenceOfElementLocated(Pune));
+
 		Actions act = new Actions(driver);
 		act.sendKeys(driver.findElement(Pune)).keyDown(Keys.ARROW_DOWN).keyUp(Keys.ARROW_UP).click().build().perform();
-		
+
 	}
 
-	public void ClickOnDeparture()  {
+	public void ClickOnDeparture() {
 		driver.findElement(Departure).click();
-		
+
 	}
 
 	public void ClickOnDate() {
 		driver.findElement(Date).click();
-		
+
 	}
 
 	public void ClickOnTraveller() {

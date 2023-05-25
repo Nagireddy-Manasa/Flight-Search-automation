@@ -21,8 +21,9 @@ public class PrintingFlightDetails {
 	By Filghts = By.tagName("div");
 	By AirIndiaFlight = By.xpath(
 			"//div[@class='right-searchbarbtm']//div[@class='right-searchbarbtm-in']//div//div[2]//b[text()='Air India']");
-	 By Flightname=By.xpath("//div[@class='right-searchbarbtm']");
-By VistaraFlight=By.xpath("//div[@class='right-searchbarbtm']//div[@class='right-searchbarbtm-in']//div//div[2]//b[text()='Vistara']");
+	By Flightname = By.xpath("//div[@class='right-searchbarbtm']");
+	By VistaraFlight = By.xpath(
+			"//div[@class='right-searchbarbtm']//div[@class='right-searchbarbtm-in']//div//div[2]//b[text()='Vistara']");
 
 	WebDriver driver;
 
@@ -50,9 +51,9 @@ By VistaraFlight=By.xpath("//div[@class='right-searchbarbtm']//div[@class='right
 		System.out.println("No of flights are " + row.size());
 		for (WebElement name : row) {
 			String AirIndia = name.findElement(AirIndiaFlight).getText();
-			String Vistara=name.findElement(VistaraFlight).getText();
+			String Vistara = name.findElement(VistaraFlight).getText();
 			System.out.println("Flight name:   " + AirIndia);
-			System.out.println("Flight name: "+Vistara);
+			System.out.println("Flight name: " + Vistara);
 		}
 	}
 
