@@ -16,14 +16,10 @@ import org.testng.Assert;
 public class PrintingFlightDetails {
 	By CheckingDetailsHyd = By.xpath("//div[@class='right-searchbarbtm-in']//div[2]//span[text()='Hyderabad (HYD)']");
 	By CheckingDetailsPune = By.xpath("//div[@class='right-searchbarbtm-in']//div[3]//span[text()='Pune (PNQ)']");
-	By CheckingDetailsDate = By.xpath("//a[@tabindex='0']//span[text()='Thu, 25 May']");
+	By CheckingDetailsDate = By.xpath("//a[@tabindex='0']//span[text()='Fri, 26 May']");
 	By Table = By.xpath("//div[@class='col-12 col-md-9 right-searchbar']");
-	By Filghts = By.tagName("div");
-	By AirIndiaFlight = By.xpath(
-			"//div[@class='right-searchbarbtm']//div[@class='right-searchbarbtm-in']//div//div[2]//b[text()='Air India']");
-	By Flightname = By.xpath("//div[@class='right-searchbarbtm']");
-	By VistaraFlight = By.xpath(
-			"//div[@class='right-searchbarbtm']//div[@class='right-searchbarbtm-in']//div//div[2]//b[text()='Vistara']");
+	By Flight = By.className("right-searchbarbtm");
+	By flightName = By.className("right-searchbarbtm-in");
 
 	WebDriver driver;
 
@@ -45,15 +41,13 @@ public class PrintingFlightDetails {
 		}
 	}
 
-	public void PrintingAvailFlights() {
+	public void printingAvailFlights() {
 		WebElement rows = driver.findElement(Table);
-		List<WebElement> row = rows.findElements(Filghts);
+		List<WebElement> row = rows.findElements(Flight);
 		System.out.println("No of flights are " + row.size());
 		for (WebElement name : row) {
-			String AirIndia = name.findElement(AirIndiaFlight).getText();
-			String Vistara = name.findElement(VistaraFlight).getText();
-			System.out.println("Flight name:   " + AirIndia);
-			System.out.println("Flight name: " + Vistara);
+			String availableFlights = name.findElement(flightName).getText();
+			System.out.println("Flight name: " + availableFlights);
 		}
 	}
 
