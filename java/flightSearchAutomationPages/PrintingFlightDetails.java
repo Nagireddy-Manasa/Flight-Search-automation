@@ -35,7 +35,6 @@ public class PrintingFlightDetails {
 		if (CheckingDetailsHyd.equals(Hyderabad) && CheckingDetailsPune.equals(Pune)
 				&& CheckingDetailsDate.equals(Date)) {
 			Assert.assertTrue(true);
-			Assert.assertTrue(true);
 		} else {
 			Assert.assertFalse(false);
 		}
