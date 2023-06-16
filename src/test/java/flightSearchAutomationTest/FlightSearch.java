@@ -29,13 +29,14 @@ public class FlightSearch {
 
 	@BeforeTest
 	public void LaunchTheBrowser() {
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\nagmanasa\\Desktop\\driver\\chromedriver.exe");
+		//System.setProperty("webdriver.chrome.driver", "C:\\Users\\nagmanasa\\Desktop\\driver\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver","C:\\Users\\nagmanasa\\Desktop\\driver\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("https://www.air.irctc.co.in/");
 		String title = driver.getTitle();
 		Assert.assertTrue(true, title);
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(40));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 		detailsObject = new EnteringFlightDetails(driver);
 		availableFlightsObject = new PrintingFlightDetails(driver);
 	}
@@ -45,13 +46,14 @@ public class FlightSearch {
 
 		detailsObject.ClickOnOrigin("hyd");
 
+		Thread.sleep(1000);
 	}
 
 	@Test(priority = 1)
 	public void testPopup() throws InterruptedException {
-
+		Thread.sleep(1000);
 		detailsObject.ClickOnPopup();
-		Thread.sleep(500);
+		Thread.sleep(7000);
 
 	}
 
@@ -59,7 +61,7 @@ public class FlightSearch {
 	public void testHyd() throws InterruptedException {
 
 		detailsObject.ClickOnHyd();
-		Thread.sleep(500);
+		Thread.sleep(2000);
 
 	}
 
@@ -67,7 +69,7 @@ public class FlightSearch {
 	public void testDestination() throws InterruptedException {
 
 		detailsObject.ClickOnDestination("pun");
-		Thread.sleep(500);
+		Thread.sleep(2000);
 
 	}
 
@@ -75,14 +77,14 @@ public class FlightSearch {
 	public void testPune() throws InterruptedException {
 
 		detailsObject.ClickOnPune();
-		Thread.sleep(500);
+		Thread.sleep(2000);
 	}
 
 	@Test(priority = 6)
 	public void testDeparture() throws InterruptedException {
 
 		detailsObject.ClickOnDeparture();
-		Thread.sleep(500);
+		Thread.sleep(2000);
 	}
 
 	@Test(priority = 7)
@@ -97,7 +99,7 @@ public class FlightSearch {
 	public void testTraveller() throws InterruptedException {
 
 		detailsObject.ClickOnTraveller();
-		Thread.sleep(500);
+		Thread.sleep(2000);
 
 	}
 
@@ -105,14 +107,14 @@ public class FlightSearch {
 	public void testEconomy() throws InterruptedException {
 
 		detailsObject.ClickOnEconomy();
-		Thread.sleep(500);
+		Thread.sleep(2000);
 	}
 
 	@Test(priority = 10)
 	public void testSearch() throws InterruptedException {
 
 		detailsObject.ClickOnSearch();
-		Thread.sleep(500);
+		Thread.sleep(2000);
 
 	}
 
@@ -120,35 +122,27 @@ public class FlightSearch {
 	public void testCheckDetails() throws InterruptedException {
 
 		availableFlightsObject.CheckingDetails();
-		Thread.sleep(500);
+
 	}
 
 	@Test(priority = 12)
 	public void testFlightDetails() throws InterruptedException {
 
-		availableFlightsObject.PrintingAvailFlights();
-		Thread.sleep(500);
+		availableFlightsObject.printingAvailFlights();
+
 	}
 
 	@Test(priority = 13)
 	public void CapturingScreenshot() throws IOException, InterruptedException {
-
-		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		String date = new SimpleDateFormat("dd-mm-yyyy-hh-mm-ss-ms").format(new Date());
-		File target = new File("C:\\Users\\nagmanasa\\Desktop\\Project\\Capture" + date + ".png");
+		TakesScreenshot capture = (TakesScreenshot) driver;
+		File scrFile = capture.getScreenshotAs(OutputType.FILE);
+		File target = new File("C:\\Users\\nagmanasa\\Desktop\\Project\\capture.png");
 		FileUtils.copyFile(scrFile, target);
 		availableFlightsObject.CaptureScreenshot();
-		Thread.sleep(1000);
-		File scrFile1 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		File target1 = new File("C:\\Users\\nagmanasa\\Desktop\\Project\\Capture1" + date + ".png");
+		Thread.sleep(100);
+		File scrFile1 = capture.getScreenshotAs(OutputType.FILE);
+		File target1 = new File("C:\\Users\\nagmanasa\\Desktop\\Project\\capture1.png");
 		FileUtils.copyFile(scrFile1, target1);
-		availableFlightsObject.CaptureScreenshot();
-		Thread.sleep(1000);
-		File scrFile2 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		File target2 = new File("C:\\Users\\nagmanasa\\Desktop\\Project\\Capture2" + date + ".png");
-		FileUtils.copyFile(scrFile2, target2);
-		availableFlightsObject.CaptureScreenshot();
-
 	}
 
 	@AfterTest

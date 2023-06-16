@@ -21,7 +21,6 @@ public class ReportsGen implements ITestListener {
 	WebDriver driver;
 
 	public void onStart(ITestContext context) {
-		System.out.println("on start of the test");
 		String date = new SimpleDateFormat("dd-mm-yyyy-hh-mm-ss-ms").format(new Date());
 		reporter = new ExtentSparkReporter("C:\\Users\\nagmanasa\\Desktop\\ProjectReport");
 		extent = new ExtentReports();
